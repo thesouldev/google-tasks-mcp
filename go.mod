@@ -2,7 +2,10 @@ module github.com/thesouldev/google-tasks-mcp
 
 go 1.26.0
 
-require google.golang.org/api v0.315.0
+require (
+	golang.org/x/oauth2 v0.38.0
+	google.golang.org/api v0.315.0
+)
 
 require (
 	cloud.google.com/go/auth v0.24.1-0.20261001053825-dbc26066f70a // indirect
@@ -24,7 +27,6 @@ require (
 	go.opentelemetry.io/otel/trace v1.47.0 // indirect
 	golang.org/x/crypto v0.58.0 // indirect
 	golang.org/x/net v0.62.0 // indirect
-	golang.org/x/oauth2 v0.38.0 // indirect
 	golang.org/x/sys v0.49.0 // indirect
 	golang.org/x/text v0.43.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20261104224025-d1e00e9f33ab // indirect
