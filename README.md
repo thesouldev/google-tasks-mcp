@@ -99,18 +99,29 @@ config:
 Create a Desktop OAuth client in a browser signed in to the account that holds
 your tasks.
 
-1. Create or pick a project at the [Google Cloud console](https://console.cloud.google.com).
+1. [Create a Google Cloud project](https://console.cloud.google.com/projectcreate),
+   or select an existing one in the console's project picker.
 2. Enable the [Tasks API](https://console.cloud.google.com/apis/library/tasks.googleapis.com).
-3. Open Google Auth Platform, click Get started, fill in the app name, choose
-   the External audience, and add your contact email.
-4. Open Clients, create an OAuth client of type Desktop, and download its JSON.
-5. Save it as `~/.config/google-tasks-mcp/credentials.json`.
+3. Open the [Google Auth Platform overview](https://console.cloud.google.com/auth/overview),
+   click Get started, fill in the app name, choose the External audience, and
+   add your contact email.
+4. Open [Clients](https://console.cloud.google.com/auth/clients), create an
+   OAuth client of type Desktop app, and download its JSON.
+5. Save it as `~/.config/google-tasks-mcp/credentials.json`:
+
+   ```bash
+   mkdir -p ~/.config/google-tasks-mcp
+   mv ~/Downloads/client_secret_*.json ~/.config/google-tasks-mcp/credentials.json
+   ```
+
+6. Open [Audience](https://console.cloud.google.com/auth/audience) and click
+   Publish app, so the publishing status reads In production.
 
 > [!IMPORTANT]
 > The Tasks scope is sensitive. While the app is in Testing, Google issues a
-> refresh token that expires after 7 days. Set the publishing status to In
-> production so the token persists. Unverified is fine for personal use; you
-> click past one warning screen at sign in.
+> refresh token that expires after 7 days, which is why step 6 matters.
+> Unverified is fine for personal use; you click past one warning screen at
+> sign in.
 
 An existing Desktop client with the Tasks API enabled works too.
 
