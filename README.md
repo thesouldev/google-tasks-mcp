@@ -57,6 +57,9 @@ Or download the archive for your platform from
 go install github.com/thesouldev/google-tasks-mcp/cmd/google-tasks-mcp@latest
 ```
 
+`go install` puts the binary in `$(go env GOPATH)/bin`, which needs to be on
+your PATH.
+
 Then add it to your MCP client:
 
 ```bash
