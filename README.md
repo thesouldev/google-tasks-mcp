@@ -43,11 +43,22 @@ and write tasks and nothing else: no Gmail, no Drive, no Calendar.
 
 ### Installation
 
-With Homebrew on macOS or Linux:
+With Homebrew on macOS:
 
 ```bash
 brew install thesouldev/tap/google-tasks-mcp
 ```
+
+On Ubuntu and other Linux distributions:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/thesouldev/google-tasks-mcp/main/install.sh | sh
+```
+
+The script downloads the latest release for your architecture, verifies its
+checksum, and installs it to `/usr/local/bin`. Run it again to update. Set
+`GOOGLE_TASKS_MCP_INSTALL_DIR` to install elsewhere, or
+`GOOGLE_TASKS_MCP_VERSION` to pin a release.
 
 Or download the archive for your platform from
 [Releases](https://github.com/thesouldev/google-tasks-mcp/releases) and put
