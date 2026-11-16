@@ -1,0 +1,50 @@
+version: 2
+project_name: google-tasks-mcp
+
+builds:
+  - main: ./cmd/google-tasks-mcp
+    binary: google-tasks-mcp
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -X main.version={{ .Version }}
+    goos: [darwin, linux, windows]
+    goarch: [amd64, arm64]
+
+archives:
+  - formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    files:
+      - LICENSE
+      - README.md
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  use: github
+  filters:
+    exclude:
+      - "^ci"
+      - "^docs"
+      - "^test"
+
+homebrew_casks:
+  - name: google-tasks-mcp
+    repository:
+      owner: thesouldev
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+    homepage: https://github.com/thesouldev/google-tasks-mcp
+    description: MCP server for Google Tasks
+    license: GPL-3.0-only
+    binaries:
+      - google-tasks-mcp
+    hooks:
+      post:
+        install_steps: |
+          run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{ .StagedPath }}/google-tasks-mcp"]
